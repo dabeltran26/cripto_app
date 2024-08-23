@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "848132170838",
+    "project_id": "wallet-cripto",
+    "storage_bucket": "wallet-cripto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848132170838:android:3828234d9be654dea687f7",
+        "android_client_info": {
+          "package_name": "com.example.cripto_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848132170838-4atajfd2om1vua6ivcagt3j00qlidsun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cripto_app",
+            "certificate_hash": "aa12a856dd700c833a9289c2e8d2d82f9c4804c6"
+          }
+        },
+        {
+          "client_id": "848132170838-tfi983ql8ikcbgus8limv6c7k3ubjnob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnTn_cfVcM3L83TqCGBE-wXCzw4c7pV2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848132170838-tfi983ql8ikcbgus8limv6c7k3ubjnob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
