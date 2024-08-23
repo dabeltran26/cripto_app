@@ -132,7 +132,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            appRouter.pushNamed('/Register');
+                            appRouter.pushNamed('/register-view');
                           },
                           child: const Text(
                             register,

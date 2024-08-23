@@ -1,5 +1,5 @@
 import 'package:cripto_app/config/app_theme.dart';
-import 'package:cripto_app/config/lcoator.dart';
+import 'package:cripto_app/config/locator.dart';
 import 'package:cripto_app/config/providers.dart';
 import 'package:cripto_app/config/router/app_router.dart';
 import 'package:cripto_app/resources/hive_service.dart';
