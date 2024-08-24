@@ -3,6 +3,7 @@ import 'package:cripto_app/login/data/datasource/login_service.dart';
 import 'package:cripto_app/login/domain/respositories/login_repository.dart';
 import 'package:cripto_app/resources/base_api_repository.dart';
 import 'package:cripto_app/resources/base_state.dart';
+import 'package:cripto_app/resources/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginRepositoryImpl extends BaseApiRepository implements LoginApiRepository {
@@ -19,5 +20,10 @@ class LoginRepositoryImpl extends BaseApiRepository implements LoginApiRepositor
   @override
   Future<UserCredential> signInWithCredentials(String email, String password) async {
     return await firebaseLoginServices.signInWithCredentials(email, password);
+  }
+
+  @override
+  Future<UserModel?> getUserInfo(String uid) async {
+    return await firebaseLoginServices.getUserInfo(uid);
   }
 }

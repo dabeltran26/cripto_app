@@ -42,7 +42,7 @@ class _LoginViewState extends State<LoginView> {
                 child: Column(
                   children: [
                     SizedBox(height: 30.h),
-                    GestureDetector(
+                    /*GestureDetector(
                       onTap: () {
                         loginCubit.loginWitchGoogle(() {
                           appRouter.replaceNamed('/base-nav-bar');
@@ -58,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
                         borderColor: ColorsApp.primaryColor,
                       ),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 4.h),*/
                     Padding(
                       padding: EdgeInsets.only(left: 6.w, right: 6.w),
                       child: Column(
@@ -103,7 +103,7 @@ class _LoginViewState extends State<LoginView> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 2.h),
                     GestureDetector(
                       onTap: () {
                         loginCubit.loginWitchCredentials(() {
@@ -118,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
                         ColorsApp.white,
                       ),
                     ),
-                    SizedBox(height: 14.h),
+                    SizedBox(height: 4.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

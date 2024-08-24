@@ -31,7 +31,13 @@ class LoginCubit extends BaseCubit<LoginState> {
   Future<void> loginWitchCredentials(Function navigate, String email, String password) async {
     emit(const LoginLoading());
     try {
-      await _apiRepository.signInWithCredentials(email, password);
+      UserCredential user = await _apiRepository.signInWithCredentials(email, password);
+      var userData = await _apiRepository.getUserInfo(user.user!.uid);
+      if (userData != null) {
+        print('melo');
+      } else {
+        emit(const LoginInitial('No se encontró usuario.'));
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         emit(const LoginInitial('No se encontró usuario.'));

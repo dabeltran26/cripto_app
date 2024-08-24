@@ -3,20 +3,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseRegisterServices {
-  final FirebaseAuth _firebaseAuth;
-  final FirebaseFirestore _firestore;
+  final FirebaseAuth firebaseAuth;
+  final FirebaseFirestore firestore;
 
   FirebaseRegisterServices({FirebaseAuth? firebaseAuth, FirebaseFirestore? firestore})
-      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-        _firestore = firestore ?? FirebaseFirestore.instance;
+      : firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
+        firestore = firestore ?? FirebaseFirestore.instance;
 
   Future<UserCredential> signUpCredentials(String email, String pass) async {
-    return await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: pass);
+    return await firebaseAuth.createUserWithEmailAndPassword(email: email, password: pass);
   }
 
   Future<bool> saveUser(UserModel user) async {
     try {
-      await _firestore.collection('users').doc(user.uid).set(user.toMap());
+      await firestore.collection('users').doc(user.uid).set(user.toMap());
       return true;
     } catch (e) {
       return true;

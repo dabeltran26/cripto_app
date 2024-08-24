@@ -200,8 +200,8 @@ class _RegisterViewState extends State<RegisterView> {
                                   children: [
                                     TextSpan(
                                       text: 'Al iniciar sesión aceptas los ',
-                                      style: TextStyle(
-                                          color: ColorsApp.black, fontSize: 15, fontFamily: 'GilroyMedium'),
+                                      style:
+                                          TextStyle(color: ColorsApp.black, fontSize: 15, fontFamily: 'GilroyMedium'),
                                     ),
                                     TextSpan(
                                       text: 'Términos & condiciones y',
@@ -305,7 +305,12 @@ class _RegisterViewState extends State<RegisterView> {
           //appRouter.pushNamed('/base-nav-bar');
         }, emailController!.text, passwordController!.text, nameController!.text, age, birthday!);
       } else {
-        print('muy chinche');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Debes ser mayor de 18 años'),
+            duration: Duration(seconds: 2),
+          ),
+        );
       }
     }
   }
