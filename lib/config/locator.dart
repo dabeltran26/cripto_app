@@ -1,3 +1,7 @@
+import 'package:cripto_app/favorites/data/datasource/favorite_service.dart';
+import 'package:cripto_app/favorites/data/datasource/firebase_favorite_service.dart';
+import 'package:cripto_app/favorites/data/repositories/favorite_repository_impl.dart';
+import 'package:cripto_app/favorites/domain/respositories/favorite_repository.dart';
 import 'package:cripto_app/home/data/datasource/firebase_home_service.dart';
 import 'package:cripto_app/home/data/datasource/home_service.dart';
 import 'package:cripto_app/home/data/repositories/home_repository_impl.dart';
@@ -62,5 +66,18 @@ Future<void> initializeDependencies() async {
 
   locator.registerSingleton<HomeApiRepository>(
     HomeRepositoryImpl(locator<HomeApiService>(), locator<FirebaseHomeServices>()),
+  );
+
+  //FAVORITES
+  locator.registerSingleton<FavoriteApiService>(
+    FavoriteApiService(locator<Dio>()),
+  );
+
+  locator.registerSingleton<FirebaseFavoriteServices>(
+    FirebaseFavoriteServices(),
+  );
+
+  locator.registerSingleton<FavoriteApiRepository>(
+    FavoriteRepositoryImpl(locator<FavoriteApiService>(), locator<FirebaseFavoriteServices>()),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:cripto_app/config/colors.dart';
+import 'package:cripto_app/favorites/presentation/views/favorite_view.dart';
 import 'package:cripto_app/home/presentation/views/home_view.dart';
 import 'package:cripto_app/utils/images.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,7 @@ class _BaseViewState extends State<BaseView> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final List<Widget> navigatorScreens = [
       const HomeView(),
-      const Center(
-        child: Text('Favoritos'),
-      ),
+      const FavoriteView(),
       const Center(
         child: Text('Perfil'),
       ),

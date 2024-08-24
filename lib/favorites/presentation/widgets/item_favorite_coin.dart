@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:cripto_app/resources/models/coin_model.dart';
 import 'package:intl/intl.dart';
 
-class ItemCard extends StatelessWidget {
+class ItemFavoriteCoin extends StatelessWidget {
   final CoinModel coin;
   final Function saveFavorite;
 
-  const ItemCard({super.key, required this.coin, required this.saveFavorite});
+  const ItemFavoriteCoin({super.key, required this.coin, required this.saveFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class ItemCard extends StatelessWidget {
               child: const Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  addFavorite,
+                  deleteFavorite,
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: ColorsApp.primaryColor),
                 ),
               ),
