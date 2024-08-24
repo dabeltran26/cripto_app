@@ -1,3 +1,4 @@
+import 'package:cripto_app/home/data/datasource/firebase_home_service.dart';
 import 'package:cripto_app/home/data/datasource/home_service.dart';
 import 'package:cripto_app/home/data/repositories/home_repository_impl.dart';
 import 'package:cripto_app/home/domain/respositories/home_repository.dart';
@@ -55,7 +56,11 @@ Future<void> initializeDependencies() async {
     HomeApiService(locator<Dio>()),
   );
 
+  locator.registerSingleton<FirebaseHomeServices>(
+    FirebaseHomeServices(),
+  );
+
   locator.registerSingleton<HomeApiRepository>(
-    HomeRepositoryImpl(locator<HomeApiService>()),
+    HomeRepositoryImpl(locator<HomeApiService>(), locator<FirebaseHomeServices>()),
   );
 }

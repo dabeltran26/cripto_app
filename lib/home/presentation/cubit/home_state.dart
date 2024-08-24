@@ -17,11 +17,7 @@ abstract class HomeState extends Equatable {
   List<Object?> get props => [userName, coins, errorMessage, error];
 }
 
-class HomeInitial extends HomeState {
-  final String? errorMessage;
-
-  const HomeInitial(this.errorMessage);
-}
+class HomeInitial extends HomeState {}
 
 class HomeLoading extends HomeState {
   const HomeLoading();
@@ -34,5 +30,7 @@ class HomeSuccess extends HomeState {
 }
 
 class HomeFailed extends HomeState {
-  const HomeFailed({error});
+  final String? errorMessage;
+
+  const HomeFailed(this.errorMessage);
 }

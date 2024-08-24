@@ -7,8 +7,9 @@ import 'package:intl/intl.dart';
 
 class CoinCard extends StatelessWidget {
   final CoinModel coin;
+  final Function saveFavorite;
 
-  const CoinCard({super.key, required this.coin});
+  const CoinCard({super.key, required this.coin, required this.saveFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +91,7 @@ class CoinCard extends StatelessWidget {
             SizedBox(height: 0.5.h),
             GestureDetector(
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Agregado a favoritos'),
-                    duration: Duration(seconds: 2),
-                  ),
-                );
+                saveFavorite();
               },
               child: const Align(
                 alignment: Alignment.bottomRight,

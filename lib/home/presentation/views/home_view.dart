@@ -65,6 +65,16 @@ class _HomeViewState extends State<HomeView> {
                         itemBuilder: (context, index) {
                           return CoinCard(
                             coin: state.coins![index],
+                            saveFavorite: () {
+                              homeCubit.saveFavoriteCoin(state.coins![index], () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Agregado a tus favoritos'),
+                                    duration: Duration(seconds: 2),
+                                  ),
+                                );
+                              });
+                            },
                           );
                         },
                       ),
