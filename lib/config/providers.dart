@@ -1,4 +1,6 @@
 import 'package:cripto_app/config/locator.dart';
+import 'package:cripto_app/home/domain/respositories/home_repository.dart';
+import 'package:cripto_app/home/presentation/cubit/home_cubit.dart';
 import 'package:cripto_app/login/domain/respositories/login_repository.dart';
 import 'package:cripto_app/login/presentation/cubit/login_cubit.dart';
 import 'package:cripto_app/register/domain/repositories/register_repository.dart';
@@ -17,6 +19,10 @@ abstract class Providers {
           create: (context) => RegisterCubit(
                 locator<RegisterApiRepository>(),
               )),
+      BlocProvider(
+          create: (context) => HomeCubit(
+                locator<HomeApiRepository>(),
+              )..getCoins()),
     ];
     return providers;
   }

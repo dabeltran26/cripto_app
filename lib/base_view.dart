@@ -1,4 +1,5 @@
 import 'package:cripto_app/config/colors.dart';
+import 'package:cripto_app/home/presentation/views/home_view.dart';
 import 'package:cripto_app/utils/images.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class _BaseViewState extends State<BaseView> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    tabController = TabController(vsync: this, length: 4);
+    tabController = TabController(vsync: this, length: 3);
     super.initState();
   }
 
@@ -27,36 +28,21 @@ class _BaseViewState extends State<BaseView> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final List<Widget> navigatorScreens = [
+      const HomeView(),
       const Center(
-        child: Text('Buscador'),
+        child: Text('Favoritos'),
       ),
       const Center(
-        child: Text('Buscador'),
-      ),
-      const Center(
-        child: Text('Reservas'),
+        child: Text('Perfil'),
       ),
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: ColorsApp.white,
         currentIndex: tabController.index,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold).copyWith(fontSize: 14),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal).copyWith(fontSize: 14),
         onTap: (index) {
-          switch (index) {
-            case 0:
-              print('tab$index');
-              break;
-            case 1:
-              print('tab$index');
-              break;
-            case 2:
-              print('tab$index');
-              break;
-            case 3:
-              print('tab${index}');
-              break;
-          }
           setState(() {
             tabController.index = index;
           });
@@ -102,11 +88,7 @@ class _BaseViewState extends State<BaseView> with TickerProviderStateMixin {
       body: PopScope(
         onPopInvoked: (b) async => false,
         child: SafeArea(
-          child: Stack(
-            children: [
-              navigatorScreens[tabController.index],
-            ],
-          ),
+          child: navigatorScreens[tabController.index],
         ),
       ),
     );

@@ -7,9 +7,16 @@ class CustomTextField extends StatefulWidget {
   final bool? isPassword;
   final FormFieldValidator<String>? validator;
   final GestureTapCallback? onTap;
+  final Color? borderColor;
+  final Function? onChange;
 
   const CustomTextField(this.hintText, this.controller,
-      {super.key, this.isPassword = false, this.validator, this.onTap});
+      {super.key,
+      this.isPassword = false,
+      this.validator,
+      this.onTap,
+      this.borderColor = ColorsApp.grey,
+      this.onChange});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -29,28 +36,33 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Container(
       color: Colors.transparent,
       child: TextFormField(
+          onChanged: (String value) {
+            if (widget.onChange != null) {
+              widget.onChange!(value);
+            }
+          },
+          cursorColor: ColorsApp.primaryColor,
           onTap: widget.onTap,
           controller: widget.controller,
           style: const TextStyle(color: ColorsApp.black),
           obscureText: obscureText,
           decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: ColorsApp.primaryColor,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: widget.borderColor!,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
             contentPadding: const EdgeInsets.only(left: 10),
             hintText: widget.hintText,
             hintStyle: const TextStyle(
-              color: ColorsApp.black30,
-              fontFamily: 'GilroyMedium',
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Color(0xffE0E0E0),
-              ),
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Color(0xffE0E0E0),
-              ),
-              borderRadius: BorderRadius.circular(12.0),
+              color: ColorsApp.grey,
             ),
             suffixIcon: widget.isPassword!
                 ? GestureDetector(

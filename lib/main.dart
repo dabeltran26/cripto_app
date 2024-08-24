@@ -2,6 +2,7 @@ import 'package:cripto_app/config/app_theme.dart';
 import 'package:cripto_app/config/locator.dart';
 import 'package:cripto_app/config/providers.dart';
 import 'package:cripto_app/config/router/app_router.dart';
+import 'package:cripto_app/resources/api_client.dart';
 import 'package:cripto_app/resources/hive_service.dart';
 import 'package:cripto_app/resources/json_reader.dart';
 import 'package:cripto_app/utils/strings.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
   await HiveService.initHive();
   await JsonReader.initialize();
   await initializeDependencies();
+  ApiClient().setHeader();
 
   runApp(const MyApp());
 }
