@@ -1,17 +1,16 @@
 import 'package:cripto_app/config/colors.dart';
 import 'package:cripto_app/config/router/app_router.dart';
 import 'package:cripto_app/login/presentation/cubit/login_cubit.dart';
-import 'package:cripto_app/login/presentation/widget/social_button.dart';
-import 'package:cripto_app/utils/images.dart';
 import 'package:cripto_app/utils/responsive.dart';
 import 'package:cripto_app/utils/strings.dart';
 import 'package:cripto_app/widgets/button.dart';
 import 'package:cripto_app/widgets/custom_textfield.dart';
+import 'package:cripto_app/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -107,7 +106,7 @@ class _LoginViewState extends State<LoginView> {
                     GestureDetector(
                       onTap: () {
                         loginCubit.loginWitchCredentials(() {
-                          appRouter.replaceNamed('/base-nav-bar');
+                          appRouter.replaceNamed('/base-view');
                         }, emailController!.text, passwordController!.text);
                       },
                       child: CustomButton.button(
@@ -150,7 +149,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
               );
             case LoginLoading:
-              return Container();
+              return const Loading();
             default:
               return const SizedBox();
           }

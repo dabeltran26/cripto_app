@@ -1,0 +1,114 @@
+import 'package:cripto_app/config/colors.dart';
+import 'package:cripto_app/utils/images.dart';
+import 'package:flutter/material.dart';
+
+class BaseView extends StatefulWidget {
+  const BaseView({super.key});
+
+  @override
+  State<BaseView> createState() => _BaseViewState();
+}
+
+class _BaseViewState extends State<BaseView> with TickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    tabController = TabController(vsync: this, length: 4);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> navigatorScreens = [
+      const Center(
+        child: Text('Buscador'),
+      ),
+      const Center(
+        child: Text('Buscador'),
+      ),
+      const Center(
+        child: Text('Reservas'),
+      ),
+    ];
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: tabController.index,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold).copyWith(fontSize: 14),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal).copyWith(fontSize: 14),
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              print('tab$index');
+              break;
+            case 1:
+              print('tab$index');
+              break;
+            case 2:
+              print('tab$index');
+              break;
+            case 3:
+              print('tab${index}');
+              break;
+          }
+          setState(() {
+            tabController.index = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: ColorsApp.black60,
+        selectedItemColor: ColorsApp.primaryColor,
+        items: [
+          BottomNavigationBarItem(
+            icon: SizedBox(
+              height: 20,
+              width: 20,
+              child: Image.asset(
+                Images.homeIcon,
+                color: tabController.index == 0 ? ColorsApp.primaryColor : ColorsApp.black60,
+              ),
+            ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: SizedBox(
+              height: 20,
+              width: 20,
+              child: Image.asset(
+                Images.favoritesIcon,
+                color: tabController.index == 1 ? ColorsApp.primaryColor : ColorsApp.black60,
+              ),
+            ),
+            label: "Favoritos",
+          ),
+          BottomNavigationBarItem(
+              icon: SizedBox(
+                height: 20,
+                width: 20,
+                child: Image.asset(
+                  Images.profileIcon,
+                  color: tabController.index == 2 ? ColorsApp.primaryColor : ColorsApp.black60,
+                ),
+              ),
+              label: "Perfil"),
+        ],
+      ),
+      body: PopScope(
+        onPopInvoked: (b) async => false,
+        child: SafeArea(
+          child: Stack(
+            children: [
+              navigatorScreens[tabController.index],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

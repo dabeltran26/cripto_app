@@ -1,10 +1,10 @@
 import 'package:cripto_app/config/colors.dart';
 import 'package:cripto_app/config/router/app_router.dart';
 import 'package:cripto_app/register/presentation/cubit/register_cubit.dart';
-import 'package:cripto_app/resources/models/user_model.dart';
 import 'package:cripto_app/utils/responsive.dart';
 import 'package:cripto_app/widgets/button.dart';
 import 'package:cripto_app/widgets/custom_textfield.dart';
+import 'package:cripto_app/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -272,7 +272,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
               );
             case RegisterLoading:
-              return Container();
+              return const Loading();
             default:
               return const SizedBox();
           }
@@ -302,7 +302,7 @@ class _RegisterViewState extends State<RegisterView> {
       formKey.currentState?.save();
       if (age != 0 && age >= 18) {
         registerCubit.registerWitchCredentials(() {
-          //appRouter.pushNamed('/base-nav-bar');
+          appRouter.replaceNamed('/base-view');
         }, emailController!.text, passwordController!.text, nameController!.text, age, birthday!);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

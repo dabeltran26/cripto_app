@@ -1,9 +1,20 @@
+import 'package:hive/hive.dart';
+
+part 'user_model.g.dart';
+
+@HiveType(typeId: 1)
 class UserModel {
+  @HiveField(0)
   String email;
+  @HiveField(1)
   String password;
+  @HiveField(2)
   String name;
+  @HiveField(3)
   DateTime birthday;
+  @HiveField(4)
   int age;
+  @HiveField(5)
   String uid;
 
   UserModel({

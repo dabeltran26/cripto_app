@@ -1,6 +1,7 @@
 import 'package:cripto_app/login/domain/models/login.request.dart';
 import 'package:cripto_app/login/domain/respositories/login_repository.dart';
 import 'package:cripto_app/resources/base_cubit.dart';
+import 'package:cripto_app/resources/hive_service.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -34,7 +35,9 @@ class LoginCubit extends BaseCubit<LoginState> {
       UserCredential user = await _apiRepository.signInWithCredentials(email, password);
       var userData = await _apiRepository.getUserInfo(user.user!.uid);
       if (userData != null) {
-        print('melo');
+        HiveService.saveFirebaseToken(userData.uid);
+        HiveService.saveUser(userData);
+        navigate();
       } else {
         emit(const LoginInitial('No se encontró usuario.'));
       }
