@@ -2,6 +2,7 @@ import 'package:cripto_app/register/data/datasource/firebase_register_service.da
 import 'package:cripto_app/register/domain/repositories/register_repository.dart';
 import 'package:cripto_app/resources/base_cubit.dart';
 import 'package:cripto_app/resources/hive_service.dart';
+import 'package:cripto_app/resources/models/user_model.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,13 +14,25 @@ class RegisterCubit extends BaseCubit<RegisterState> {
 
   RegisterCubit(this._apiRepository) : super(const RegisterInitial(''));
 
-  Future<void> registerWitchCredentials(Function navigate, String email, String password, String name) async {
+  Future<void> registerWitchCredentials(
+      Function navigate, String email, String password, String name, int age, DateTime birthday) async {
     emit(const RegisterLoading());
     try {
       UserCredential responseFirebase = await _apiRepository.signUpCredentials(email, password);
       if (responseFirebase.user != null) {
         //HiveService.saveFirebaseToken(responseFirebase.user!.uid);
-        navigate();
+        var user = UserModel(
+            email: email,
+            password: password,
+            name: name,
+            birthday: birthday,
+            age: age,
+            uid: responseFirebase.user!.uid);
+        if (await _apiRepository.saveUser(user)) {
+          navigate();
+        } else {
+          emit(const RegisterInitial('Hubo un error inesperado.'));
+        }
       } else {
         emit(const RegisterInitial('Hubo un error inesperado.'));
       }

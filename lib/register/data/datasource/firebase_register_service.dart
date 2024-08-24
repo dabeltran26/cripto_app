@@ -1,13 +1,25 @@
+import 'package:cripto_app/resources/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseRegisterServices {
   final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
 
-  FirebaseRegisterServices({FirebaseAuth? firebaseAuth, GoogleSignIn? googleSignIn})
-      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+  FirebaseRegisterServices({FirebaseAuth? firebaseAuth, FirebaseFirestore? firestore})
+      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
+        _firestore = firestore ?? FirebaseFirestore.instance;
 
   Future<UserCredential> signUpCredentials(String email, String pass) async {
     return await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: pass);
+  }
+
+  Future<bool> saveUser(UserModel user) async {
+    try {
+      await _firestore.collection('users').doc(user.uid).set(user.toMap());
+      return true;
+    } catch (e) {
+      return true;
+    }
   }
 }
