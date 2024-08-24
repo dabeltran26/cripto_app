@@ -2,6 +2,7 @@ import 'package:cripto_app/config/colors.dart';
 import 'package:cripto_app/home/presentation/cubit/home_cubit.dart';
 import 'package:cripto_app/home/presentation/widgets/item_coin.dart';
 import 'package:cripto_app/utils/responsive.dart';
+import 'package:cripto_app/utils/strings.dart';
 import 'package:cripto_app/widgets/custom_textfield.dart';
 import 'package:cripto_app/widgets/loading.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
                 return Column(
                   children: [
                     const Text(
-                      'Cripto App',
+                      appTitle,
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,

@@ -5,3 +5,5 @@ const String password = 'Contraseña';
 const String initSession = 'Iniciar sesión';
 const String notHaveAccountQuestion = '¿No tienes una cuenta? ';
 const String register = 'Registrate';
+
+const String addFavorite = 'Agregar a favoritos';

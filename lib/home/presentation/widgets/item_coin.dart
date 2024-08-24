@@ -1,5 +1,6 @@
 import 'package:cripto_app/config/colors.dart';
 import 'package:cripto_app/utils/responsive.dart';
+import 'package:cripto_app/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:cripto_app/resources/models/coin_model.dart';
 import 'package:intl/intl.dart';
@@ -20,67 +21,89 @@ class CoinCard extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
           children: [
-            Expanded(
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 50,
-                    child: Image.network(
-                      coin.image,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: 4.w),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Row(
                     children: [
-                      Text(
-                        coin.symbol.toUpperCase(),
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      SizedBox(
+                        height: 50,
+                        child: Image.network(
+                          coin.image,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      SizedBox(height: 0.5.h),
-                      SizedBox(
-                        width: 40.w,
-                        child: Text(
-                          coin.name,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: ColorsApp.grey,
+                      SizedBox(width: 4.w),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            coin.symbol.toUpperCase(),
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
+                          SizedBox(height: 0.5.h),
+                          SizedBox(
+                            width: 40.w,
+                            child: Text(
+                              coin.name,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: ColorsApp.grey,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  formatCurrency.format(coin.currentPrice),
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
-                SizedBox(height: 0.5.h),
-                Text(
-                  '${coin.priceChangePercentage24H}%',
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: ColorsApp.success,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      formatCurrency.format(coin.currentPrice),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 0.5.h),
+                    Text(
+                      '${coin.priceChangePercentage24H}%',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: ColorsApp.success,
+                      ),
+                    ),
+                  ],
                 ),
               ],
+            ),
+            SizedBox(height: 0.5.h),
+            GestureDetector(
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Agregado a favoritos'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              },
+              child: const Align(
+                alignment: Alignment.bottomRight,
+                child: Text(
+                  addFavorite,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: ColorsApp.primaryColor),
+                ),
+              ),
             ),
           ],
         ),
