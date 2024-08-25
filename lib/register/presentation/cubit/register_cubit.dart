@@ -21,7 +21,6 @@ class RegisterCubit extends BaseCubit<RegisterState> {
       if (responseFirebase.user != null) {
         var user = UserModel(
             email: email,
-            password: password,
             name: name,
             birthday: birthday,
             age: age,

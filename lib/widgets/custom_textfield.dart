@@ -9,6 +9,7 @@ class CustomTextField extends StatefulWidget {
   final GestureTapCallback? onTap;
   final Color? borderColor;
   final Function? onChange;
+  final bool? enabled;
 
   const CustomTextField(this.hintText, this.controller,
       {super.key,
@@ -16,7 +17,8 @@ class CustomTextField extends StatefulWidget {
       this.validator,
       this.onTap,
       this.borderColor = ColorsApp.grey,
-      this.onChange});
+      this.onChange,
+      this.enabled = true});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -41,6 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               widget.onChange!(value);
             }
           },
+          enabled: widget.enabled,
           cursorColor: ColorsApp.primaryColor,
           onTap: widget.onTap,
           controller: widget.controller,

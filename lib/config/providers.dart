@@ -5,6 +5,8 @@ import 'package:cripto_app/home/domain/respositories/home_repository.dart';
 import 'package:cripto_app/home/presentation/cubit/home_cubit.dart';
 import 'package:cripto_app/login/domain/respositories/login_repository.dart';
 import 'package:cripto_app/login/presentation/cubit/login_cubit.dart';
+import 'package:cripto_app/profile/domain/respositories/profile_repository.dart';
+import 'package:cripto_app/profile/presentation/cubit/profile_cubit.dart';
 import 'package:cripto_app/register/domain/repositories/register_repository.dart';
 import 'package:cripto_app/register/presentation/cubit/register_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +31,10 @@ abstract class Providers {
           create: (context) => FavoriteCubit(
                 locator<FavoriteApiRepository>(),
               )),
+      BlocProvider(
+          create: (context) => ProfileCubit(
+                locator<ProfileApiRepository>(),
+              )..getUser()),
     ];
     return providers;
   }

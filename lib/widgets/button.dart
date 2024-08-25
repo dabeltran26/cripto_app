@@ -9,7 +9,7 @@ class CustomButton {
           border: Border.all(color: borderColor, width: 1.5),
           color: backgroundColor,
           borderRadius: const BorderRadius.all(
-            Radius.circular(22),
+            Radius.circular(10),
           ),
         ),
         height: 6.h,

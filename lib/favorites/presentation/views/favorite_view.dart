@@ -16,14 +16,11 @@ class FavoriteView extends StatefulWidget {
 
 class _FavoriteViewState extends State<FavoriteView> {
   late FavoriteCubit favoriteCubit;
-  TextEditingController? searchController;
-  String searchText = '';
 
   @override
   void initState() {
     favoriteCubit = BlocProvider.of<FavoriteCubit>(context);
     favoriteCubit.getFavoriteCoins();
-    searchController = TextEditingController();
     super.initState();
   }
 

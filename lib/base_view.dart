@@ -4,6 +4,8 @@ import 'package:cripto_app/home/presentation/views/home_view.dart';
 import 'package:cripto_app/utils/images.dart';
 import 'package:flutter/material.dart';
 
+import 'profile/presentation/views/profile_view.dart';
+
 class BaseView extends StatefulWidget {
   const BaseView({super.key});
 
@@ -28,13 +30,7 @@ class _BaseViewState extends State<BaseView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> navigatorScreens = [
-      const HomeView(),
-      const FavoriteView(),
-      const Center(
-        child: Text('Perfil'),
-      ),
-    ];
+    final List<Widget> navigatorScreens = [const HomeView(), const FavoriteView(), const ProfileView()];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: ColorsApp.white,
