@@ -33,7 +33,7 @@ class ItemCard extends StatelessWidget {
                       SizedBox(
                         height: 50,
                         child: Image.network(
-                          coin.image,
+                          coin.image!,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -42,7 +42,7 @@ class ItemCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            coin.symbol.toUpperCase(),
+                            coin.symbol!.toUpperCase(),
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class ItemCard extends StatelessWidget {
                           SizedBox(
                             width: 40.w,
                             child: Text(
-                              coin.name,
+                              coin.name!,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: const TextStyle(

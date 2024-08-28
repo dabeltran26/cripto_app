@@ -73,7 +73,11 @@ class _LoginViewState extends State<LoginView> {
                               ),
                             ),
                           ),
-                          CustomTextField('', emailController),
+                          CustomTextField(
+                            '',
+                            emailController,
+                            key: const Key('email_field'),
+                          ),
                           SizedBox(height: 2.h),
                           const Align(
                             alignment: Alignment.centerLeft,
@@ -86,7 +90,12 @@ class _LoginViewState extends State<LoginView> {
                               ),
                             ),
                           ),
-                          CustomTextField('', passwordController, isPassword: true),
+                          CustomTextField(
+                            '',
+                            passwordController,
+                            isPassword: true,
+                            key: const Key('password_field'),
+                          ),
                           SizedBox(height: 2.h),
                           state.errorMessage != ''
                               ? Text(

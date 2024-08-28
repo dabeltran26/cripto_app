@@ -5,6 +5,7 @@ class CustomButton {
   static Widget button(text, w, borderColor, backgroundColor, textColor) {
     return Center(
       child: Container(
+        key: const Key('login_button'),
         decoration: BoxDecoration(
           border: Border.all(color: borderColor, width: 1.5),
           color: backgroundColor,

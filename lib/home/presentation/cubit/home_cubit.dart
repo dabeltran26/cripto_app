@@ -36,7 +36,7 @@ class HomeCubit extends BaseCubit<HomeState> {
       filterCoins = allCoins;
       emit(HomeSuccess(filterCoins));
     } else {
-      filterCoins = allCoins.where((crypto) => crypto.name.toLowerCase().contains(searchText.toLowerCase())).toList();
+      filterCoins = allCoins.where((crypto) => crypto.name!.toLowerCase().contains(searchText.toLowerCase())).toList();
       emit(HomeSuccess(filterCoins));
     }
   }

@@ -30,7 +30,7 @@ class FavoriteCubit extends BaseCubit<FavoriteState> {
       if (response is DataSuccess && favoriteCoins.isNotEmpty) {
         allCoins = response.data!;
 
-        Set<String> favoriteIds = favoriteCoins.map((coin) => coin.id).toSet();
+        Set<String?> favoriteIds = favoriteCoins.map((coin) => coin.id).toSet();
 
         for (var coin in allCoins) {
           if (favoriteIds.contains(coin.id)) {

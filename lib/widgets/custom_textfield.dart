@@ -38,6 +38,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Container(
       color: Colors.transparent,
       child: TextFormField(
+          key: widget.key,
           onChanged: (String value) {
             if (widget.onChange != null) {
               widget.onChange!(value);
