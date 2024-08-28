@@ -66,3 +66,6 @@
 
 # Obsolete files to ignore
 **/pubspec.lock
+
+#images golden test
+test/**/*.png

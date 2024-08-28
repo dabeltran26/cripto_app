@@ -10,6 +10,7 @@ class CustomTextField extends StatefulWidget {
   final Color? borderColor;
   final Function? onChange;
   final bool? enabled;
+  final Key? keyTextField;
 
   const CustomTextField(this.hintText, this.controller,
       {super.key,
@@ -18,7 +19,8 @@ class CustomTextField extends StatefulWidget {
       this.onTap,
       this.borderColor = ColorsApp.grey,
       this.onChange,
-      this.enabled = true});
+      this.enabled = true,
+      this.keyTextField});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -38,7 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Container(
       color: Colors.transparent,
       child: TextFormField(
-          key: widget.key,
+          key: widget.keyTextField,
           onChanged: (String value) {
             if (widget.onChange != null) {
               widget.onChange!(value);
