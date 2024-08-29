@@ -5,4 +5,4 @@ import 'package:mockito/annotations.dart';
 import 'package:bloc_test/bloc_test.dart';
 
 @GenerateMocks([LoginApiRepository])
-import '../../../integration_test/app_test.dart';
+import '../../../integration_test/app_integration_test.dart';

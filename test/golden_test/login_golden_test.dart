@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:cripto_app/login/data/datasource/firebase_login_service.dart';
 import 'package:cripto_app/login/data/datasource/login_service.dart';
 import 'package:cripto_app/login/presentation/cubit/login_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -17,8 +16,6 @@ class MockLoginCubit extends MockCubit<LoginState> implements LoginCubit {
 
 class MockLoginService extends Mock implements LoginApiService {}
 
-class MockFirebaseLoginService extends Mock implements FirebaseLoginService {}
-
 void main() {
   final getIt = GetIt.instance;
   late MockLoginCubit mockLoginCubit;
@@ -26,7 +23,6 @@ void main() {
   setUpAll(() {
     mockLoginCubit = MockLoginCubit();
     getIt.registerSingleton<MockLoginService>(MockLoginService());
-    getIt.registerSingleton<MockFirebaseLoginService>(MockFirebaseLoginService());
     getIt.registerSingleton<LoginCubit>(mockLoginCubit);
   });
 
@@ -36,7 +32,7 @@ void main() {
     getIt.reset();
   });
 
-  testWidgets('golden home', (tester) async {
+  testWidgets('golden login', (tester) async {
     await tester.pumpWidget(
       TestWidget(
         item: MaterialApp(

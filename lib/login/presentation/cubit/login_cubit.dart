@@ -15,7 +15,7 @@ class LoginCubit extends BaseCubit<LoginState> {
 
   LoginCubit(this._apiRepository) : super(const LoginInitial(''));
 
-  Future<void> loginWitchGoogle(Function navigate) async {
+  /*Future<void> loginWitchGoogle(Function navigate) async {
     emit(const LoginLoading());
     try {
       bool responseFirebase = await _apiRepository.signInWithGoogle();
@@ -27,7 +27,7 @@ class LoginCubit extends BaseCubit<LoginState> {
     } catch (_) {
       emit(const LoginInitial('Ocurrio un error'));
     }
-  }
+  }*/
 
   Future<void> loginWitchCredentials(Function navigate, String email, String password) async {
     emit(const LoginLoading());
@@ -38,6 +38,7 @@ class LoginCubit extends BaseCubit<LoginState> {
         HiveService.saveFirebaseToken(userData.uid);
         HiveService.saveUser(userData);
         navigate();
+        emit(const LoginInitial('Todo melo'));
       } else {
         emit(const LoginInitial('No se encontró usuario.'));
       }
@@ -49,8 +50,8 @@ class LoginCubit extends BaseCubit<LoginState> {
       } else {
         emit(LoginInitial(e.code));
       }
-    } catch (_) {
-      emit(const LoginInitial('Hubo un error inesperado'));
+    } catch (e) {
+      emit(LoginInitial('hubo errro $e'));
     }
   }
 }

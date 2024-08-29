@@ -8,7 +8,7 @@ import 'package:mockito/mockito.dart';
 import 'mock_home_repository.mocks.dart';
 
 void main() {
-  group('Get coins test', () {
+  group('home coins test', () {
     late HomeCubit homeCubit;
     late MockHomeApiRepository mockApiRepository;
 
@@ -22,7 +22,7 @@ void main() {
     });
 
     blocTest<HomeCubit, HomeState>(
-      'verificar qu [HomeLoading, HomeSuccess] se emitan al ser exitoso el llanado',
+      'verificar trare coins melo',
       build: () {
         when(mockApiRepository.getCoins()).thenAnswer((_) async => DataSuccess<List<CoinModel>>([
               CoinModel(name: 'Bitcoin', symbol: 'BTC'),
@@ -38,7 +38,7 @@ void main() {
     );
 
     blocTest<HomeCubit, HomeState>(
-      'verificar que  [HomeLoading, HomeFailed] se emitan cunado falle la peticion',
+      'verificar traer coins fale',
       build: () {
         final dioError = DioException(
           requestOptions: RequestOptions(path: ''),

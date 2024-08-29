@@ -2,10 +2,10 @@ import 'package:cripto_app/utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton {
-  static Widget button(text, w, borderColor, backgroundColor, textColor) {
+  static Widget button(text, w, borderColor, backgroundColor, textColor, key) {
     return Center(
       child: Container(
-        key: const Key('login_button'),
+        key: key,
         decoration: BoxDecoration(
           border: Border.all(color: borderColor, width: 1.5),
           color: backgroundColor,

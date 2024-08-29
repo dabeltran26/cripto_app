@@ -100,7 +100,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 return 'Este campo es obligatorio';
                               }
                               return null;
-                            }),
+                            }, keyTextField: const Key('name_field')),
                             SizedBox(height: 1.h),
                             const Align(
                               alignment: Alignment.centerLeft,
@@ -121,7 +121,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 return 'Ingresa un email válido';
                               }
                               return null;
-                            }),
+                            }, keyTextField: const Key('email_field')),
                             SizedBox(height: 1.h),
                             const Align(
                               alignment: Alignment.centerLeft,
@@ -134,20 +134,15 @@ class _RegisterViewState extends State<RegisterView> {
                                 ),
                               ),
                             ),
-                            CustomTextField(
-                              '',
-                              passwordController,
-                              isPassword: true,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Este campo es obligatorio';
-                                }
-                                if (value.length < 6) {
-                                  return 'La contraseña debe tener al menos 6 caracteres';
-                                }
-                                return null;
-                              },
-                            ),
+                            CustomTextField('', passwordController, isPassword: true, validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Este campo es obligatorio';
+                              }
+                              if (value.length < 6) {
+                                return 'La contraseña debe tener al menos 6 caracteres';
+                              }
+                              return null;
+                            }, keyTextField: const Key('password_field')),
                             SizedBox(height: 1.h),
                             const Align(
                               alignment: Alignment.centerLeft,
@@ -167,7 +162,8 @@ class _RegisterViewState extends State<RegisterView> {
                                   }
                                   return null;
                                 },
-                                onTap: () => selectBirthday(context)),
+                                onTap: () => selectBirthday(context),
+                                keyTextField: const Key('birth_date_field')),
                           ],
                         ),
                       ),
@@ -177,6 +173,7 @@ class _RegisterViewState extends State<RegisterView> {
                         child: Row(
                           children: [
                             Checkbox(
+                              key: const Key('check_box'),
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(10),
@@ -228,16 +225,17 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                       SizedBox(height: 4.h),
                       GestureDetector(
+                        key: const Key('create_account_gesture'),
                         onTap: () {
                           isChecked ? submitForm() : null;
                         },
                         child: CustomButton.button(
-                          'Crear cuenta',
-                          90.w,
-                          Colors.transparent,
-                          isChecked ? ColorsApp.primaryColor : ColorsApp.black60,
-                          ColorsApp.white,
-                        ),
+                            'Crear cuenta',
+                            90.w,
+                            Colors.transparent,
+                            isChecked ? ColorsApp.primaryColor : ColorsApp.black60,
+                            ColorsApp.white,
+                            const Key('register_button')),
                       ),
                       SizedBox(height: 4.h),
                       Row(

@@ -15,6 +15,7 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final formatCurrency = NumberFormat.simpleCurrency(locale: 'en_US');
     return Container(
+      key: Key('${coin.name}_coin'),
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
       decoration: BoxDecoration(
         color: ColorsApp.white,
@@ -35,6 +36,12 @@ class ItemCard extends StatelessWidget {
                         child: Image.network(
                           coin.image!,
                           fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey,
+                              width: 50,
+                            );
+                          },
                         ),
                       ),
                       SizedBox(width: 4.w),
