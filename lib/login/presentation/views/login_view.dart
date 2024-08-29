@@ -76,7 +76,7 @@ class _LoginViewState extends State<LoginView> {
                           CustomTextField(
                             '',
                             emailController,
-                            key: const Key('email_field'),
+                            keyTextField: const Key('email_field'),
                           ),
                           SizedBox(height: 2.h),
                           const Align(
@@ -94,7 +94,7 @@ class _LoginViewState extends State<LoginView> {
                             '',
                             passwordController,
                             isPassword: true,
-                            key: const Key('password_field'),
+                            keyTextField: const Key('password_field'),
                           ),
                           SizedBox(height: 2.h),
                           state.errorMessage != ''
@@ -113,18 +113,14 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     SizedBox(height: 2.h),
                     GestureDetector(
+                      key: const Key('login_gesture'),
                       onTap: () {
                         loginCubit.loginWitchCredentials(() {
                           appRouter.replaceNamed('/base-view');
                         }, emailController!.text, passwordController!.text);
                       },
-                      child: CustomButton.button(
-                        initSession,
-                        90.w,
-                        Colors.transparent,
-                        ColorsApp.primaryColor,
-                        ColorsApp.white,
-                      ),
+                      child: CustomButton.button(initSession, 90.w, Colors.transparent, ColorsApp.primaryColor,
+                          ColorsApp.white, const Key('login_button')),
                     ),
                     SizedBox(height: 4.h),
                     Row(
@@ -139,6 +135,7 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ),
                         GestureDetector(
+                          key: const Key('go_register_gesture'),
                           onTap: () {
                             appRouter.pushNamed('/register-view');
                           },

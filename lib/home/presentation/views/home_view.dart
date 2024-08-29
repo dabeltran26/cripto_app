@@ -38,6 +38,7 @@ class _HomeViewState extends State<HomeView> {
                 return Column(
                   children: [
                     const Text(
+                      key: Key('title_text'),
                       appTitle,
                       style: TextStyle(
                         fontSize: 30,
@@ -48,6 +49,7 @@ class _HomeViewState extends State<HomeView> {
                     Padding(
                       padding: EdgeInsets.only(left: 4.w, right: 4.w),
                       child: CustomTextField(
+                        key: const Key('search_bar'),
                         'Buscar criptomoneda...',
                         searchController,
                         borderColor: ColorsApp.primaryColor,
@@ -61,6 +63,7 @@ class _HomeViewState extends State<HomeView> {
                     SizedBox(height: 2.h),
                     Expanded(
                       child: ListView.builder(
+                        key: const Key('slider_coins'),
                         itemCount: state.coins!.length,
                         itemBuilder: (context, index) {
                           return ItemCard(

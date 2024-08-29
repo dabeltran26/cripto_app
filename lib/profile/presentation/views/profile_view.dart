@@ -147,6 +147,7 @@ class _ProfileViewState extends State<ProfileView> {
                           Colors.transparent,
                           ColorsApp.primaryColor,
                           ColorsApp.white,
+                            const Key('update_password_profile_button')
                         ),
                       ),
                       SizedBox(height: 2.h),
@@ -157,12 +158,12 @@ class _ProfileViewState extends State<ProfileView> {
                           }
                         },
                         child: CustomButton.button(
-                          'Actualizar informacion',
-                          90.w,
-                          Colors.transparent,
-                          isEditable ? ColorsApp.primaryColor : ColorsApp.grey,
-                          ColorsApp.white,
-                        ),
+                            'Actualizar informacion',
+                            90.w,
+                            Colors.transparent,
+                            isEditable ? ColorsApp.primaryColor : ColorsApp.grey,
+                            ColorsApp.white,
+                            const Key('update_information_button')),
                       ),
                     ],
                   ),

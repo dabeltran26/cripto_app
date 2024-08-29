@@ -68,13 +68,8 @@ class _UpdatePasswordFormState extends State<UpdatePasswordForm> {
                   Navigator.pop(context);
                 }
               },
-              child: CustomButton.button(
-                'Actualizar contraseña',
-                90.w,
-                Colors.transparent,
-                ColorsApp.primaryColor,
-                ColorsApp.white,
-              ),
+              child: CustomButton.button('Actualizar contraseña', 90.w, Colors.transparent, ColorsApp.primaryColor,
+                  ColorsApp.white, const Key('update_password_button')),
             ),
             SizedBox(height: 4.h),
           ],
